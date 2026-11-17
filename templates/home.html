@@ -22,7 +22,7 @@
             color: #1e293b;
         }
 
-        /* Header */
+     
 
         .header {
             background: linear-gradient(110deg, #4338ca, #7c3aed, #db2777);
@@ -52,7 +52,7 @@
             background: #1d4ed8;
         }
 
-        /* Main Section */
+
 
         .main {
             width: 96%;
@@ -72,7 +72,7 @@
             margin-bottom: 25px;
         }
 
-        /* Student Grid */
+    
 
         .container {
             display: grid;
@@ -81,7 +81,6 @@
             align-items: stretch;
         }
 
-        /* Student Card */
 
         .card {
             background: linear-gradient(145deg, #ffffff, #eef2ff);
@@ -103,8 +102,6 @@
             box-shadow: 0 12px 25px rgba(79, 70, 229, 0.2);
         }
 
-        /* Student Image */
-
         
       
       
@@ -123,7 +120,7 @@
 
 
 
-        /* Student Name */
+   
 
         .card h2 {
             font-size: 19px;
@@ -133,7 +130,6 @@
             overflow-wrap: anywhere;
         }
 
-        /* Attendance Status */
 
         .status {
             display: inline-block;
@@ -157,7 +153,7 @@
             border: 1px solid #fca5a5;
         }
 
-        /* Student Details */
+
 
         .details {
             border-top: 1px solid #c7d2fe;
@@ -176,7 +172,7 @@
             color: #1e293b;
         }
 
-        /* Three Buttons */
+
 
         .buttons {
             display: grid;
@@ -215,7 +211,6 @@
             margin: 0;
         }
 
-        /* View Button */
 
         .view-btn {
             background: #0891b2;
@@ -225,7 +220,7 @@
             background: #0e7490;
         }
 
-        /* Update Button */
+
 
         .update-btn {
             background: #4f46e5;
@@ -236,7 +231,7 @@
             background: #3730a3;
         }
 
-        /* Delete Button */
+
 
         .delete-btn {
             background: #dc2626;
@@ -246,7 +241,7 @@
             background: #991b1b;
         }
 
-        /* Responsive Design */
+
 
         @media (max-width: 1200px) {
 
@@ -297,7 +292,7 @@
 
 <body>
 
-    <!-- Header -->
+
 
     <header class="header">
 
@@ -310,7 +305,7 @@
     </header>
 
 
-    <!-- Main Section -->
+
 
     <main class="main">
 
@@ -323,7 +318,6 @@
         </p>
 
 
-        <!-- Student Cards -->
 
         <div class="container">
 
@@ -331,20 +325,19 @@
 
             <div class="card">
 
-                <!-- Student Image -->
+           
 
                 <img src="{{ std[6] }}"
                      alt="Student Photo"
                      class="student-image">
 
 
-                <!-- Student Name -->
+            
 
                 <h2>{{ std[1] }}</h2>
 
 
-                <!-- Attendance -->
-
+              
                 {% if std[7] == 1 %}
 
                     <span class="status present">
@@ -360,7 +353,6 @@
                 {% endif %}
 
 
-                <!-- Student Details -->
 
                 <div class="details">
 
@@ -387,7 +379,6 @@
                 </div>
 
 
-                <!-- View, Update and Delete Buttons -->
 
                 <div class="buttons">
 

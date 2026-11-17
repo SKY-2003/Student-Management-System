@@ -117,10 +117,7 @@ def create_std(
     cursor.execute(q, values)
     connection.commit()
     connection.close()
-    # return{
-    #     "msg":"student added",
-    #     "data":values
-    # }
+    
     return RedirectResponse("/", status_code=303)
 
 @app.get("/students/update/{student_id}")
