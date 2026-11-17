@@ -1,0 +1,85 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Update Student</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            background: #e0e7ff;
+            padding: 30px;
+        }
+
+        .form-container {
+            max-width: 450px;
+            margin: auto;
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0 15px;
+            box-sizing: border-box;
+        }
+
+        button {
+            background: #4f46e5;
+            color: white;
+            padding: 12px;
+            border: none;
+            width: 100%;
+            border-radius: 7px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="form-container">
+
+    <h2>Update Student Details</h2>
+
+    <form action="/students/update/{{ student[0] }}"
+          method="post">
+
+        <label>Name</label>
+        <input type="text" name="name"
+               value="{{ student[1] }}" required>
+
+        <label>Age</label>
+        <input type="number" name="age"
+               value="{{ student[2] }}" min="18" max="30" required>
+
+        <label>Gender</label>
+        <input type="text" name="gender"
+               value="{{ student[3] }}" required>
+
+        <label>Marks</label>
+        <input type="number" name="marks"
+               value="{{ student[4] }}" required>
+
+        <label>Course</label>
+        <input type="text" name="course"
+               value="{{ student[5] }}" required>
+
+        <label>Image URL</label>
+        <input type="text" name="image"
+               value="{{ student[6] }}" required>
+
+        <label>Status (1 = Present, 0 = Absent)</label>
+        <input type="number" name="status"
+               value="{{ student[7] }}" min="0" max="1" required>
+
+        <button type="submit">Save Changes</button>
+
+    </form>
+
+</div>
+
+</body>
+</html>

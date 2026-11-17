@@ -1,0 +1,115 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Student Details</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #e0e7ff, #fce7f3, #dbeafe);
+            padding: 40px 20px;
+            color: #1e293b;
+        }
+
+        .container {
+            max-width: 500px;
+            margin: auto;
+            background: white;
+            padding: 30px;
+            border-radius: 18px;
+            box-shadow: 0 8px 25px rgba(79, 70, 229, 0.15);
+        }
+
+        h1 {
+            text-align: center;
+            color: #4338ca;
+            margin-bottom: 25px;
+        }
+
+        .student-image {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            display: block;
+            margin: 0 auto 25px;
+            border: 5px solid #a5b4fc;
+        }
+
+        .details h3 {
+            padding: 13px;
+            margin-bottom: 10px;
+            background: #eef2ff;
+            border-radius: 8px;
+            font-size: 16px;
+        }
+
+        .back-btn {
+            display: block;
+            width: 100%;
+            background: linear-gradient(110deg, #4338ca, #7c3aed, #db2777);
+            color: white;
+            padding: 14px;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: bold;
+            margin-top: 25px;
+            transition: 0.3s;
+        }
+
+        .back-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(79, 70, 229, 0.3);
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>Student Details</h1>
+
+        <img src="{{ std[6] }}"
+             alt="Student Photo"
+             class="student-image">
+
+        <div class="details">
+
+            <h3>ID: {{ std[0] }}</h3>
+            <h3>Name: {{ std[1] }}</h3>
+            <h3>Age: {{ std[2] }}</h3>
+            <h3>Gender: {{ std[3] }}</h3>
+            <h3>Marks: {{ std[4] }}</h3>
+            <h3>Course: {{ std[5] }}</h3>
+            <h3>Status:
+                {% if std[7] == 1 %}
+                    Present
+                {% else %}
+                    Absent
+                {% endif %}
+            </h3>
+
+        </div>
+
+        <a href="/" class="back-btn">
+            ← Back to Home
+        </a>
+
+    </div>
+
+</body>
+</html>

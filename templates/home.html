@@ -1,0 +1,458 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Student Management System</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #e0e7ff, #fce7f3, #dbeafe);
+            color: #1e293b;
+        }
+
+        /* Header */
+
+        .header {
+            background: linear-gradient(110deg, #4338ca, #7c3aed, #db2777);
+            padding: 22px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 5px 20px rgba(79, 70, 229, 0.2);
+        }
+
+        .header h1 {
+            font-size: 28px;
+            color: white;
+        }
+
+        .add-btn {
+            background: #2563eb;
+            color: white;
+            padding: 12px 20px;
+            text-decoration: none;
+            border-radius: 8px;
+            font-size: 15px;
+            font-weight: bold;
+        }
+
+        .add-btn:hover {
+            background: #1d4ed8;
+        }
+
+        /* Main Section */
+
+        .main {
+            width: 96%;
+            max-width: 1800px;
+            margin: 35px auto;
+            padding: 0 10px;
+        }
+
+        .section-title {
+            font-size: 25px;
+            color: #4338ca;
+            margin-bottom: 8px;
+        }
+
+        .subtitle {
+            color: #64748b;
+            margin-bottom: 25px;
+        }
+
+        /* Student Grid */
+
+        .container {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 22px;
+            align-items: stretch;
+        }
+
+        /* Student Card */
+
+        .card {
+            background: linear-gradient(145deg, #ffffff, #eef2ff);
+            padding: 20px;
+            min-width: 0;
+            min-height: 420px;
+            border-radius: 18px;
+            border: 1px solid #c7d2fe;
+            box-shadow: 0 8px 25px rgba(79, 70, 229, 0.12);
+
+            display: flex;
+            flex-direction: column;
+
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 25px rgba(79, 70, 229, 0.2);
+        }
+
+        /* Student Image */
+
+        
+      
+      
+        .student-image {
+            width: 100%;
+            height: 180px;
+            display: block;
+            object-fit: cover;
+            object-position: center;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            border: 3px solid #a5b4fc;
+            box-shadow: 0 4px 12px rgba(99, 102, 241, 0.2);
+        }
+
+
+
+
+        /* Student Name */
+
+        .card h2 {
+            font-size: 19px;
+            text-align: center;
+            margin-bottom: 18px;
+            color: #1e293b;
+            overflow-wrap: anywhere;
+        }
+
+        /* Attendance Status */
+
+        .status {
+            display: inline-block;
+            width: fit-content;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .present {
+            background-color: #dcfce7;
+            color: #15803d;
+            border: 1px solid #86efac;
+        }
+
+        .absent {
+            background-color: #fee2e2;
+            color: #dc2626;
+            border: 1px solid #fca5a5;
+        }
+
+        /* Student Details */
+
+        .details {
+            border-top: 1px solid #c7d2fe;
+            padding-top: 15px;
+            margin-bottom: 15px;
+        }
+
+        .details p {
+            font-size: 14px;
+            margin-bottom: 13px;
+            color: #475569;
+            overflow-wrap: anywhere;
+        }
+
+        .details strong {
+            color: #1e293b;
+        }
+
+        /* Three Buttons */
+
+        .buttons {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 8px;
+            width: 100%;
+            margin-top: auto;
+        }
+
+        .buttons a,
+        .buttons button {
+            width: 100%;
+            min-width: 0;
+            height: 40px;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            padding: 5px 3px;
+            border: none;
+            border-radius: 7px;
+
+            color: white;
+            text-decoration: none;
+            text-align: center;
+
+            font-size: 13px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .buttons form {
+            width: 100%;
+            min-width: 0;
+            margin: 0;
+        }
+
+        /* View Button */
+
+        .view-btn {
+            background: #0891b2;
+        }
+
+        .view-btn:hover {
+            background: #0e7490;
+        }
+
+        /* Update Button */
+
+        .update-btn {
+            background: #4f46e5;
+            margin-top: 0;
+        }
+
+        .update-btn:hover {
+            background: #3730a3;
+        }
+
+        /* Delete Button */
+
+        .delete-btn {
+            background: #dc2626;
+        }
+
+        .delete-btn:hover {
+            background: #991b1b;
+        }
+
+        /* Responsive Design */
+
+        @media (max-width: 1200px) {
+
+            .container {
+                grid-template-columns: repeat(3, minmax(0, 1fr));
+            }
+
+        }
+
+        @media (max-width: 900px) {
+
+            .container {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+        }
+
+        @media (max-width: 550px) {
+
+            .container {
+                grid-template-columns: 1fr;
+            }
+
+            .header {
+                padding: 18px;
+                gap: 12px;
+            }
+
+            .header h1 {
+                font-size: 21px;
+            }
+
+            .add-btn {
+                padding: 10px 12px;
+                font-size: 13px;
+            }
+
+            .main {
+                width: 100%;
+                padding: 0 15px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <!-- Header -->
+
+    <header class="header">
+
+        <h1>Student Management</h1>
+
+        <a href="/students/add" class="add-btn">
+            + Add Student
+        </a>
+
+    </header>
+
+
+    <!-- Main Section -->
+
+    <main class="main">
+
+        <h2 class="section-title">
+            Students Directory
+        </h2>
+
+        <p class="subtitle">
+            View and manage all registered students.
+        </p>
+
+
+        <!-- Student Cards -->
+
+        <div class="container">
+
+            {% for std in stds %}
+
+            <div class="card">
+
+                <!-- Student Image -->
+
+                <img src="{{ std[6] }}"
+                     alt="Student Photo"
+                     class="student-image">
+
+
+                <!-- Student Name -->
+
+                <h2>{{ std[1] }}</h2>
+
+
+                <!-- Attendance -->
+
+                {% if std[7] == 1 %}
+
+                    <span class="status present">
+                        Present
+                    </span>
+
+                {% else %}
+
+                    <span class="status absent">
+                        Absent
+                    </span>
+
+                {% endif %}
+
+
+                <!-- Student Details -->
+
+                <div class="details">
+
+                    <p>
+                        <strong>Age:</strong>
+                        {{ std[2] }}
+                    </p>
+
+                    <p>
+                        <strong>Gender:</strong>
+                        {{ std[3] }}
+                    </p>
+
+                    <p>
+                        <strong>Marks:</strong>
+                        {{ std[4] }}
+                    </p>
+
+                    <p>
+                        <strong>Course:</strong>
+                        {{ std[5] }}
+                    </p>
+
+                </div>
+
+
+                <!-- View, Update and Delete Buttons -->
+
+                <div class="buttons">
+
+                    <a href="/students/view/{{ std[0] }}"
+                       class="view-btn">
+
+                        View
+
+                    </a>
+
+
+                    <a href="/students/update/{{ std[0] }}"
+                       class="update-btn">
+
+                        Update
+
+                    </a>
+
+
+                    <form action="/students/delete/{{ std[0] }}"
+                          method="post"
+                          onsubmit="return confirm('Are you sure you want to delete this student?');">
+
+                        <button type="submit" class="delete-btn">
+
+                            Delete
+
+                        </button>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+            {% endfor %}
+
+        </div>
+
+    </main>
+
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
